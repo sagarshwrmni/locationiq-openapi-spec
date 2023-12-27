@@ -979,7 +979,7 @@ paths:
       operationId: balance
       tags:
         - Balance
-      description: 'The Balance API provides a count of request credits left in the user''s account for the day. Balance is reset at midnight UTC everyday (00:00 UTC).'
+      description: 'The Balance API provides a count of request credits left in the user's account for the day. Balance is reset at midnight UTC every day (00:00 UTC).'
       responses:
         '200':
           description: OK
@@ -1742,7 +1742,7 @@ components:
             description: Formatted address for display.
           display_place:
             type: string
-            description: 'Only the name part of the address; if the `type` is a `city`, just the city''s name. If the `type` is `highway`, just the road''s name. This is helpful when a client library wants to display this information separately.'
+            description: 'Only the name part of the address; if the `type` is a `city`, just the city's name. If the `type` is `highway`, just the road's name. This is helpful when a client library wants to display this information separately.'
           display_address:
             type: string
             description: The complete address without the text already present in `display_place`
@@ -1787,10 +1787,10 @@ components:
             type: string
             x-stoplight:
               id: to7sli9hdk2jt
-            description: 'The distance, in metres, from the input coordinate to the snapped coordinate.'
+            description: 'The distance, in meters, from the input coordinate to the snapped coordinate.'
           distance:
             type: number
-            description: 'The distance, in metres, from the input coordinate to the snapped coordinate.'
+            description: 'The distance, in meters, from the input coordinate to the snapped coordinate.'
           name:
             type: string
             x-stoplight:
@@ -1965,9 +1965,9 @@ components:
                           | `continue`       | Turn in direction of `modifier` to stay on the same road     |
                           | `roundabout`     | traverse roundabout, if the route leaves the roundabout there will be an additional property `exit` for exit counting. The modifier specifies the direction of entering the roundabout. |
                           | `rotary`         | a traffic circle. While very similar to a larger version of a roundabout, it does not necessarily follow roundabout rules for right of way. It can offer `rotary_name` and/or `rotary_pronunciation` parameters (located in the RouteStep object) in addition to the `exit` parameter (located on the StepManeuver object).  |
-                          | `roundabout turn`| Describes a turn at a small roundabout that should be treated as normal turn. The `modifier` indicates the turn direciton. Example instruction: `At the roundabout turn left`. |
+                          | `roundabout turn`| Describes a turn at a small roundabout that should be treated as normal turn. The `modifier` indicates the turn direction. Example instruction: `At the roundabout turn left`. |
                           | `notification`   | not an actual turn but a change in the driving conditions. For example the travel mode or classes. If the road takes a turn itself, the `modifier` describes the direction |
-                          | `exit roundabout`| Describes a maneuver exiting a roundabout (usually preceeded by a `roundabout` instruction) |
+                          | `exit roundabout`| Describes a maneuver exiting a roundabout (usually preceded by a `roundabout` instruction) |
                           | `exit rotary`    | Describes the maneuver exiting a rotary (large named roundabout) |
                       bearing_before:
                         type: number
@@ -2035,7 +2035,7 @@ components:
                 properties:
                   datasource_names:
                     type: array
-                    description: 'The names of the datasources used for the speed between each pair of coordinates.  `lua profile` is the default profile, other values arethe filenames supplied via `--segment-speed-file` to `osrm-contract` or `osrm-customize`.'
+                    description: 'The names of the datasources used for the speed between each pair of coordinates.  `lua profile` is the default profile, other values are the filenames supplied via `--segment-speed-file` to `osrm-contract` or `osrm-customize`.'
                     items:
                       type: string
               nodes:
@@ -2050,7 +2050,7 @@ components:
                   type: number
               distance:
                 type: array
-                description: 'The distance, in metres, between each pair of coordinates.'
+                description: 'The distance, in meters, between each pair of coordinates.'
                 items:
                   type: number
               weight:
@@ -2144,7 +2144,7 @@ components:
       description: |-
         Array of `Waypoint` objects representing all points of the trace in order.
 
-        If the trace point was ommited by map matching because it is an outlier, the entry will be `null`.
+        If the trace point was omitted by map matching because it is an outlier, the entry will be `null`.
       items:
         type: object
         properties:
@@ -2537,7 +2537,7 @@ components:
       name: radiuses
       in: query
       description: |-
-        Limits the search to given radius in meters Radiuses array length should be same as coordinates array, eaach value separated by semi-colon. Accepted Value - `{radius};{radius}[;{radius} ...]`
+        Limits the search to given radius in meters Radiuses array length should be same as coordinates array, each value separated by semi-colon. Accepted Value - `{radius};{radius}[;{radius} ...]`
         Each `{radius}` has following format: `double >= 0` or `unlimited` (default)
       required: false
       example: 500;200;300
@@ -2631,7 +2631,7 @@ components:
       description: |-
         Output Format. Defaults to xml. 
 
-        > This version (v1) of our Reverse Geocoding API is compatible with OpenStreetMap''s Nominatim Geocoder in both JSON & XML formats. However, all our enhancements such as additional datasets and algorithms are supported only in `json` or `xmlv1.1` format options.
+        > This version (v1) of our Reverse Geocoding API is compatible with OpenStreetMap's Nominatim Geocoder in both JSON & XML formats. However, all our enhancements such as additional datasets and algorithms are supported only in `json` or `xmlv1.1` format options.
     accept-language:
       name: accept-language
       in: query
@@ -2825,7 +2825,7 @@ components:
       required: false
       schema:
         type: string
-      description: 'If this parameter is not specified, LocationIQ uses multiple public and proprietary datasets to return results. If you''d like to restrict results to only OpenStreetMap data, you can set the value of this parameter to `nom`. This will only query our internal cluster of Nominatim servers, and return results. We may still apply some post-processing steps to these results though, so results may vary from the official Nominatim instance.'
+      description: 'If this parameter is not specified, LocationIQ uses multiple public and proprietary datasets to return results. If you'd like to restrict results to only OpenStreetMap data, you can set the value of this parameter to `nom`. This will only query our internal cluster of Nominatim servers, and return results. We may still apply some post-processing steps to these results though, so results may vary from the official Nominatim instance.'
     postalcode:
       name: postalcode
       in: query
@@ -2943,7 +2943,7 @@ components:
         example: 'place:city'
       description: |-
         Restricts results to specific types of elements. This can be used to return only administrative areas - such as towns or cities - or specific Points of Interest such as schools or restaurants. 
-        This is defined as key value pairs of `class` and `type` values based on OpenStreetMap''s (OSM) <a href="https://wiki.openstreetmap.org/wiki/Map_Features" target="_blank">exhaustive list</a>. 
+        This is defined as key value pairs of `class` and `type` values based on OpenStreetMap's (OSM) <a href="https://wiki.openstreetmap.org/wiki/Map_Features" target="_blank">exhaustive list</a>. 
         Multiple `class` and `type` values can be specified as a comma-separated list.<br/><br/>
         Examples:<ul><li>To return only cities: `tag=place:city`</li><li>To return only types of `place`, such as Suburbs, Towns and Cities, use a wildcard: `tag=place:*`</li><li>To restrict results to specific types of `place`: `tag=place:city,place:town,place:village`</li><li>To restrict results to cafes: `tag=amenity:cafe`</ul> '
     tag-nearby:
@@ -3283,7 +3283,7 @@ components:
               value:
                 error: Access restricted
     404Error:
-      description: No location or places were found for the given input
+      description: No location or places were found for the given input.
       content:
         application/json:
           schema:
@@ -3293,7 +3293,7 @@ components:
               value:
                 error: Unable to geocode
     429Error:
-      description: Request exceeded the rate-limits set on your account
+      description: Request exceeded the rate-limits set on your account.
       content:
         application/json:
           schema:
