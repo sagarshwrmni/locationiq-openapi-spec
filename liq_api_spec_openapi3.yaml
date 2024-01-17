@@ -2444,7 +2444,7 @@ components:
          matchcode  | description
          ------------|---------------
           exact      | The result matches the input query with a high level of probability.
-          fallback   | The result does not exactly match the input but is closely related to it provided there is direct a heierarchial relation.
+          fallback   | The result does not exactly match the input but is closely related to it provided there is direct a hierarchical relation.
           approximate| The result matches the input query with a medium to low level of probability.
     matchtype:
       title: matchtype
