@@ -445,7 +445,7 @@ paths:
 
         > If you use Leaflet for your maps, you add LocationIQ's Autocomplete as a plugin instantly! You can <a href="https://github.com/location-iq/leaflet-geocoder" target="_blank">view instructions here</a>. You can also view a <a href="https://maps.locationiq.com" target="_blank">live demo here</a>.
 
-        > The Autocomplete API endpoint (https://api.locationiq.com/v1) offers an Anycast IP address and route user requests to a datacenter closest to them. You can still manually specify a `region` similar to other LocationIQ endpoints, but in the interest of end-user experience, we don't recommended such a configuration.
+        > The Autocomplete API endpoint (https://api.locationiq.com/v1) offers an Anycast IP address and route user requests to a datacenter closest to them. You can still manually specify a `region` similar to other LocationIQ endpoints, but in the interest of end-user experience, we don't recommend such a configuration.
       parameters:
         - $ref: '#/components/parameters/query'
         - $ref: '#/components/parameters/countrycodes'
@@ -653,14 +653,14 @@ paths:
         required: true
         schema:
           type: string
-        description: 'String of format `{longitude},{latitude};{longitude},{latitude}[;{longitude},{latitude} ...]` or `polyline({polyline}) or polyline6({polyline6})`. <br> You can send up to a maximum of `25` coordinate pairs per request (except `Nearest API` where `coordinates` only supports a single {longitude},{latitude} entry)'
+        description: 'String of format `{longitude},{latitude};{longitude},{latitude}[;{longitude},{latitude} ...]` or `polyline({polyline}) or polyline6({polyline6})`. <br> You can send up to a maximum of `25` coordinate pairs per request (except `Nearest API` where `coordinates` only support a single {longitude},{latitude} entry)'
   '/matching/{profile}/{coordinates}':
     get:
       operationId: Matching
       summary: Matching Service
       tags:
         - Routing
-      description: Matching API matches or snaps given GPS points to the road network in the most plausible way. Please note the request might result multiple sub-traces. Large jumps in the timestamps (> 60s) or improbable transitions lead to trace splits if a complete matching could not be found. The algorithm might not be able to match all points. Outliers are removed if they can not be matched successfully.
+      description: Matching API matches or snaps given GPS points to the road network in the most plausible way. Please note the request might result multiple sub-traces. Large jumps in the timestamps (> 60s) or improbable transitions lead to trace splits if a complete matching could not be found. The algorithm might not be able to match all points. Outliers are removed if they cannot be matched successfully.
       parameters:
         - $ref: '#/components/parameters/bearings'
         - $ref: '#/components/parameters/radiuses'
@@ -1966,7 +1966,7 @@ components:
                           | `roundabout`     | traverse roundabout, if the route leaves the roundabout there will be an additional property `exit` for exit counting. The modifier specifies the direction of entering the roundabout. |
                           | `rotary`         | a traffic circle. While very similar to a larger version of a roundabout, it does not necessarily follow roundabout rules for right of way. It can offer `rotary_name` and/or `rotary_pronunciation` parameters (located in the RouteStep object) in addition to the `exit` parameter (located on the StepManeuver object).  |
                           | `roundabout turn`| Describes a turn at a small roundabout that should be treated as normal turn. The `modifier` indicates the turn direction. Example instruction: `At the roundabout turn left`. |
-                          | `notification`   | not an actual turn but a change in the driving conditions. For example the travel mode or classes. If the road takes a turn itself, the `modifier` describes the direction |
+                          | `notification`   | not an actual turn but a change in the driving conditions. For example, the travel mode or classes. If the road takes a turn itself, the `modifier` describes the direction |
                           | `exit roundabout`| Describes a maneuver exiting a roundabout (usually preceded by a `roundabout` instruction) |
                           | `exit rotary`    | Describes the maneuver exiting a rotary (large named roundabout) |
                       bearing_before:
@@ -2472,7 +2472,7 @@ components:
           building        | The returned address is of a house level.
           street          | The returned address is on a street level.
           neighbourhood   | The returned address is on a neighbourhood level.
-          island          | The returned address is on a island level.
+          island          | The returned address is on an island level.
           borough         | The returned address is on a borough level.
           city            | The returned address is on a city level.
           county          | The returned address is on a county level.
@@ -2518,7 +2518,7 @@ components:
     query:
       name: q
       in: query
-      description: 'Free-form query string to search for. Commas are optional, but improves performance by reducing the complexity of the search.'
+      description: 'Free-form query string to search for. Commas are optional but improves performance by reducing the complexity of the search.'
       schema:
         type: string
         example: Empire State Building
@@ -2583,7 +2583,7 @@ components:
         example: 18
       description: |-
         Level of detail required where `0` is country and `18` is house/building. Defaults to `18`.
-        In terms of address details the zoom levels are as follows:
+        In terms of address details, the zoom levels are as follows:
 
         zoom | address detail
         -----|---------------
@@ -2825,7 +2825,7 @@ components:
       required: false
       schema:
         type: string
-      description: 'If this parameter is not specified, LocationIQ uses multiple public and proprietary datasets to return results. If you'd like to restrict results to only OpenStreetMap data, you can set the value of this parameter to `nom`. This will only query our internal cluster of Nominatim servers, and return results. We may still apply some post-processing steps to these results though, so results may vary from the official Nominatim instance.'
+      description: 'If this parameter is not specified, LocationIQ uses multiple public and proprietary datasets to return results. If you'd like to restrict results to only OpenStreetMap data, you can set the value of this parameter to `nom`. This will only query our internal cluster of Nominatim servers and return results. We may still apply some post-processing steps to these results though, so results may vary from the official Nominatim instance.'
     postalcode:
       name: postalcode
       in: query
@@ -2975,7 +2975,7 @@ components:
         college         | List of colleges
         school          | List of schools
         pharmacy        | List of pharmacies
-        supermarket     | List of supermarket
+        supermarket     | List of supermarkets
         fuel            | List of fuel stations
         gym             | List of gyms
         place_of_worship| List of places of worship
